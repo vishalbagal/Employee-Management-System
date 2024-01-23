@@ -1,0 +1,76 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee List</title>
+    <style>
+        body {
+            background-image: url('static/images/bge.jpg');
+    
+        }
+
+        .nav {
+            margin: 0px;
+            padding: 40px;
+            background-color: rgb(0, 119, 255);
+
+        }
+
+        .sep {
+            margin: 100px;
+            padding: 50px;
+            color: rgb(196, 190, 11);
+            font-size: 50px;
+
+        }
+
+        h1 {
+            margin: 0px;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="nav" style="background-image: url('static/images/bge.jpg');">
+
+        <a class="sep" href="{% url 'employee_list' %}">Employees</a>
+        <a class="sep" href="{% url 'department_list' %}">Departments</a>
+        <a class="sep" href="{% url 'salary_list' %}">Salaries</a>
+
+    </nav>
+    <h2>Employee List</h2>
+    <table border="2px solid black">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Designation</th>
+                <th>Reporting Manager</th>
+                <th>Department</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for employee in employees %}
+            <tr>
+                <td><a href="{% url 'employee_detail' employee.id %}">{{ employee.name }}</a></td>
+                <td>{{ employee.email }}</td>
+                <td>{{ employee.designation }}</td>
+                <td>
+                    {% if employee.reporting_manager %}
+                    {{ employee.reporting_manager.name }}
+                    {% else %}
+                    N/A
+                    {% endif %}
+                </td>
+                <td>{{ employee.department.name }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+
+</html>

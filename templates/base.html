@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Management System</title>
+    <style>
+        body{
+            background-image: url('static/images/bge.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        .nav {
+            margin: 0px;
+            padding: 40px;
+            background-color: rgb(0, 119, 255);
+
+        }
+
+        .sep {
+            margin: 100px;
+            padding: 50px;
+            color: rgb(196, 190, 11);
+            font-size: 50px;
+
+        }
+        h1{
+            margin: 0px;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Welcome to IT Technologies</h1>
+    <nav class="nav">
+
+        <a class="sep" href="{% url 'employee_list' %}">Employees</a>
+        <a class="sep" href="{% url 'department_list' %}">Departments</a>
+        <a class="sep" href="{% url 'salary_list' %}">Salaries</a>
+
+    </nav>
+
+    <div class="content">
+
+    </div>
+
+</body>
+
+</html>
